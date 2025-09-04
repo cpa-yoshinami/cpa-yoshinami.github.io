@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cpa-yoshiinami.github.io/sitemap.xml

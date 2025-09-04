@@ -1,0 +1,6 @@
+node_modules
+dist
+src_new/assets/styles.css
+src_new/assets/*.png
+src_new/assets/*.jpg
+src_new/assets/*.svg

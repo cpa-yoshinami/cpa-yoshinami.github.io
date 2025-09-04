@@ -1,0 +1,1079 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-secondary-50 font-sans leading-normal text-secondary-700;
+}
+
+/* CSS Variables */
+:root {
+  --primary-500: rgb(74, 111, 165);
+}
+
+/* Custom Component Styles */
+@layer components {
+  /* Header Styles */
+  .header {
+    @apply fixed left-0 right-0 top-0 z-50 bg-secondary-200 shadow-material-1;
+  }
+
+  .header-container {
+    @apply flex items-center justify-between py-4 container-custom;
+  }
+
+  .logo h1 {
+    @apply m-0 text-2xl font-medium text-primary-500;
+  }
+
+  .nav-list {
+    @apply hidden list-none gap-3 md:flex md:gap-8;
+  }
+
+  .mobile-menu-toggle {
+    @apply relative cursor-pointer border-none bg-transparent p-2 text-2xl text-secondary-900 md:hidden;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Hamburger menu icon using CSS */
+  .mobile-menu-toggle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 2px;
+    background-color: currentColor;
+    box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor;
+    transition: all 0.3s ease;
+  }
+
+  /* Hide Material Icons fallback on mobile */
+  .mobile-menu-toggle .material-icons {
+    @apply hidden;
+  }
+
+  /* Hero Section */
+  .hero {
+    @apply relative mt-[70px] flex h-[650px] items-center overflow-hidden;
+  }
+
+  .hero-background {
+    @apply absolute inset-0 z-10;
+  }
+
+  .hero-image {
+    @apply h-full w-full object-cover;
+  }
+
+  .hero-content {
+    @apply relative z-20 text-center text-white;
+  }
+
+  .hero-title {
+    @apply mb-4 text-5xl font-bold text-white;
+  }
+
+  .hero-subtitle {
+    @apply mx-auto mb-8 max-w-4xl text-xl;
+  }
+
+  .hero-actions {
+    @apply flex flex-wrap justify-center gap-4;
+  }
+
+  /* Page Header */
+  .page-header {
+    @apply mt-[70px] bg-gradient-to-br from-primary-500 to-primary-700 text-center text-white section-padding;
+  }
+
+  .page-title {
+    @apply mb-4 text-4xl font-bold text-white;
+  }
+
+  .page-subtitle {
+    @apply text-lg text-white/90;
+  }
+
+  /* Section Styles */
+  .section {
+    @apply section-padding;
+  }
+
+  .section-header {
+    @apply mb-12 text-center;
+  }
+
+  .section-title {
+    @apply mb-4 text-3xl font-medium text-secondary-900;
+  }
+
+  .section-subtitle {
+    @apply mx-auto max-w-2xl text-lg text-secondary-600;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply card-material;
+  }
+
+  /* Director Profile */
+  .director-profile {
+    @apply mb-8 flex items-center gap-8;
+  }
+
+  .profile-img {
+    @apply h-36 w-36 flex-shrink-0 rounded-full object-cover shadow-material-2;
+  }
+
+  .director-name {
+    @apply mb-2 text-2xl font-medium;
+  }
+
+  .director-role {
+    @apply mb-0 text-base text-secondary-600;
+  }
+
+  /* Experience Items */
+  .experience-item,
+  .experience-sub-item {
+    @apply mb-4 flex items-start gap-4 rounded-material-lg bg-secondary-100 p-4;
+  }
+
+  .experience-sub-item {
+    @apply ml-8 bg-secondary-200;
+  }
+
+  .experience-item .material-icons,
+  .experience-sub-item .material-icons {
+    @apply mt-1 text-primary-500;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    @apply grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .service-card {
+    @apply rounded-material-lg bg-white p-8 text-center shadow-material-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-material-3;
+  }
+
+  .service-icon {
+    @apply mb-6;
+  }
+
+  .service-title {
+    @apply mb-4 text-xl font-medium text-secondary-900;
+  }
+
+  .service-description {
+    @apply mb-0 text-secondary-600;
+  }
+
+  /* Partners Section */
+  .partners {
+    @apply bg-gradient-to-br from-primary-50 to-secondary-100;
+    position: relative;
+  }
+
+  .partners::before {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(
+      135deg,
+      rgba(74, 111, 165, 0.05) 0%,
+      rgba(59, 130, 246, 0.02) 50%,
+      rgba(168, 85, 247, 0.03) 100%
+    );
+    z-index: 1;
+  }
+
+  .partners .container-custom {
+    @apply relative;
+    z-index: 2;
+  }
+
+  .partners-grid {
+    @apply grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .partner-card {
+    @apply relative rounded-material-lg bg-white p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-material-3;
+    border-left: 4px solid transparent;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+    backdrop-filter: blur(10px);
+  }
+
+  .partner-card::before {
+    content: '';
+    @apply absolute left-0 top-0 h-full w-1 rounded-l-material-lg;
+    background: linear-gradient(135deg, rgb(74, 111, 165), rgb(59, 130, 246));
+    transition: width 0.3s ease;
+  }
+
+  .partner-card:hover::before {
+    @apply w-2;
+  }
+
+  .partner-card:nth-child(1)::before {
+    background: linear-gradient(135deg, rgb(239, 68, 68), rgb(251, 113, 133));
+  }
+
+  .partner-card:nth-child(2)::before {
+    background: linear-gradient(135deg, rgb(59, 130, 246), rgb(147, 51, 234));
+  }
+
+  .partner-card:nth-child(3)::before {
+    background: linear-gradient(135deg, rgb(16, 185, 129), rgb(52, 211, 153));
+  }
+
+  .partner-card:nth-child(4)::before {
+    background: linear-gradient(135deg, rgb(245, 101, 101), rgb(251, 113, 133));
+  }
+
+  .partner-card:nth-child(5)::before {
+    background: linear-gradient(135deg, rgb(168, 85, 247), rgb(196, 181, 253));
+  }
+
+  .partner-logo {
+    @apply mb-4 h-12 w-auto object-contain;
+  }
+
+  .partner-name {
+    @apply mb-2 text-lg font-medium text-secondary-900;
+  }
+
+  .partner-description {
+    @apply mb-4 text-sm text-secondary-600;
+  }
+
+  .partner-link {
+    @apply mx-1 inline-block text-sm font-medium text-primary-500 transition-colors duration-200 hover:text-primary-700;
+  }
+
+  .partner-links {
+    @apply flex flex-wrap justify-center gap-4;
+  }
+
+  /* Call to Action */
+  .cta {
+    @apply bg-gradient-to-br from-primary-500 to-primary-700 text-white section-padding;
+  }
+
+  .cta-content {
+    @apply text-center;
+  }
+
+  .cta-title {
+    @apply mb-4 text-3xl font-medium text-white;
+  }
+
+  .cta-subtitle {
+    @apply mb-8 text-white/90;
+  }
+
+  /* Content Layout */
+  .content-layout {
+    @apply grid grid-cols-1 items-center gap-12 lg:grid-cols-2;
+  }
+
+  .section-image {
+    @apply h-full w-full rounded-material-lg object-cover shadow-material-2;
+    object-position: left top;
+    min-height: 100%;
+  }
+
+  /* Contact page specific image styling */
+  .contact-image .section-image {
+    @apply object-contain;
+    min-height: auto;
+  }
+
+  /* Mission Values */
+  .mission-values {
+    @apply mt-8;
+  }
+
+  .value-item {
+    @apply mb-4 flex items-start gap-4 rounded-material-lg bg-secondary-100 p-6;
+  }
+
+  .value-icon {
+    @apply flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary-500;
+  }
+
+  .value-icon .material-icons {
+    @apply text-2xl text-white;
+  }
+
+  .value-title {
+    @apply mb-2 text-lg font-medium;
+  }
+
+  .value-description {
+    @apply mb-0 text-sm text-secondary-600;
+  }
+
+  /* Team Section */
+  .team-grid {
+    @apply grid justify-center gap-8;
+  }
+
+  .team-member {
+    @apply max-w-2xl rounded-material-lg bg-white p-8 shadow-material-1;
+  }
+
+  .member-image {
+    @apply mb-8 text-center;
+  }
+
+  .member-photo {
+    @apply h-36 w-36 rounded-full object-cover shadow-material-2;
+  }
+
+  .member-name {
+    @apply mb-2 text-center text-xl font-medium;
+  }
+
+  .member-role {
+    @apply mb-6 text-center text-secondary-600;
+  }
+
+  .member-credentials {
+    @apply mb-6 flex flex-wrap justify-center gap-4;
+  }
+
+  .credential {
+    @apply flex items-center gap-2 rounded-full bg-secondary-100 px-4 py-2 text-sm;
+  }
+
+  .credential .material-icons {
+    @apply text-base text-primary-500;
+  }
+
+  .member-description {
+    @apply mb-0 text-center;
+  }
+
+  /* Experience Section with Background */
+  .experience {
+    @apply relative bg-secondary-100;
+    background-image: url('images/airplane.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .experience::before {
+    content: '';
+    @apply absolute inset-0 z-10;
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .experience > .container-custom {
+    @apply relative z-20;
+  }
+
+  /* Business Details Section with Background */
+  .business-details {
+    @apply relative bg-secondary-100;
+    background-image: url('images/office.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .business-details::before {
+    content: '';
+    @apply absolute inset-0 z-10;
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .business-details > .container-custom {
+    @apply relative z-20;
+  }
+
+  /* Timeline */
+  .experience-timeline {
+    @apply mx-auto max-w-4xl;
+  }
+
+  .timeline-item {
+    @apply mb-12 flex items-start gap-8;
+  }
+
+  .timeline-content h3 {
+    @apply mb-4 text-xl font-medium;
+  }
+
+  .timeline-description {
+    @apply mb-0;
+  }
+
+  /* Detailed Services */
+  .detailed-services {
+    @apply bg-secondary-50;
+  }
+
+  .service-detail-card {
+    @apply overflow-hidden rounded-material-lg bg-white shadow-material-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-material-3;
+  }
+
+  .service-header {
+    @apply p-8 pb-4 text-center;
+  }
+
+  .service-icon-large {
+    @apply mb-4;
+  }
+
+  .service-icon-large .service-icon-img {
+    @apply h-20 w-20;
+  }
+
+  .service-material-icon {
+    @apply text-[5rem] text-primary-500;
+  }
+
+  .service-image {
+    @apply h-48 overflow-hidden;
+  }
+
+  .service-img {
+    @apply h-full w-full object-cover;
+  }
+
+  .service-content {
+    @apply p-8;
+  }
+
+  .service-features {
+    @apply mt-6 list-none;
+  }
+
+  .service-features li {
+    @apply relative py-2 pl-6 text-secondary-600;
+  }
+
+  .service-features li::before {
+    @apply absolute left-0 font-bold text-primary-500;
+    content: '✓';
+  }
+
+  /* Features Grid */
+  .features-grid {
+    @apply grid grid-cols-1 gap-8 lg:grid-cols-2;
+  }
+
+  .feature-card {
+    @apply flex gap-6 rounded-material-lg bg-white p-8 shadow-material-1 transition-shadow duration-300 hover:shadow-material-2;
+  }
+
+  .feature-number {
+    @apply flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary-500 text-xl font-bold text-white;
+  }
+
+  .feature-title {
+    @apply mb-4 text-lg font-medium;
+  }
+
+  .feature-description {
+    @apply mb-0;
+  }
+
+  /* Process Steps */
+  .process-steps {
+    @apply mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .process-step {
+    @apply p-8 text-center;
+  }
+
+  .step-number {
+    @apply mx-auto mb-6 flex h-15 w-15 items-center justify-center rounded-full bg-primary-500 text-2xl font-bold text-white shadow-material-2;
+  }
+
+  .step-title {
+    @apply mb-4 text-lg font-medium;
+  }
+
+  .step-description {
+    @apply mb-0;
+  }
+
+  /* --- Custom: Affiliations / Qualifications / Business Details design --- */
+  .affiliations-card {
+    @apply mb-6 rounded-material-lg bg-white p-6 shadow-material-1;
+  }
+
+  .affiliations-title {
+    @apply mb-4 flex items-center gap-3 text-lg font-medium text-secondary-900;
+  }
+
+  .affiliations-title::before {
+    content: '';
+    @apply inline-block h-2 w-12 rounded-full bg-primary-500;
+  }
+
+  .affiliations-list,
+  .qualifications-list {
+    /* use normal list flow so nested ULs render correctly */
+    list-style-type: disc;
+    list-style-position: outside;
+    margin-left: 1.25rem; /* ml-5 */
+    padding-left: 0;
+  }
+
+  /* spacing for direct list items */
+  .affiliations-list > li,
+  .qualifications-list > li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* nested lists inside an affiliation should be indented and keep markers */
+  .affiliations-list li ul,
+  .qualifications-list li ul {
+    list-style-type: disc;
+    list-style-position: outside;
+    margin-left: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  /* Make the two cards sit side-by-side on md+ */
+  .director-affiliations {
+    @apply grid grid-cols-1 items-start gap-6 md:grid-cols-2;
+  }
+
+  .affiliation-item {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Business details: add cards/badges and responsive 2-column layout */
+  .business-list {
+    @apply grid list-none grid-cols-1 gap-x-6 gap-y-3 p-0;
+  }
+
+  .business-list li {
+    @apply relative rounded-md p-4 pr-10 shadow-[0_1px_3px_rgba(0,0,0,0.06)] flex items-center;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .business-list li::before {
+    content: '';
+    @apply absolute left-4 top-1/2 h-9 w-9 -translate-y-1/2 rounded-full bg-primary-500 shadow-material-2;
+  }
+
+  /* Small numeric badge inside the circle for subtle numbering */
+  .business-list li:nth-child(1)::before {
+    content: '1';
+  }
+  .business-list li:nth-child(2)::before {
+    content: '2';
+  }
+  .business-list li:nth-child(3)::before {
+    content: '3';
+  }
+  .business-list li:nth-child(4)::before {
+    content: '4';
+  }
+  .business-list li:nth-child(5)::before {
+    content: '5';
+  }
+  .business-list li:nth-child(6)::before {
+    content: '6';
+  }
+  .business-list li:nth-child(7)::before {
+    content: '7';
+  }
+  .business-list li:nth-child(8)::before {
+    content: '8';
+  }
+  .business-list li:nth-child(9)::before {
+    content: '9';
+  }
+  .business-list li:nth-child(10)::before {
+    content: '10';
+  }
+
+  .business-list li::after {
+    content: '';
+    @apply absolute left-6 top-1/2 flex -translate-y-1/2 items-center justify-center text-sm font-medium text-white;
+  }
+
+  /* Ensure number appears white and centered in the circle */
+  .business-list li::before {
+    color: #fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+  }
+
+  @media (min-width: 768px) {
+    .business-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .business-list li {
+      padding-left: 3.5rem;
+    }
+    .business-list li::before {
+      left: 1.5rem;
+    }
+  }
+
+  /* --- Overrides: remove default ul bullets for business list and shift badge left --- */
+  .business-list {
+    list-style: none; /* remove default black dot */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ensure enough left padding so the text doesn't overlap the badge */
+  .business-list li {
+    padding-left: 3rem; /* increased so text moves slightly to the right */
+  }
+
+  /* move badge further left to align as requested */
+  .business-list li::before {
+    left: 0.2rem;
+  }
+
+  @media (min-width: 768px) {
+    .business-list li {
+      padding-left: 3.75rem; /* increased on md+ so text shifts right on wider screens */
+    }
+    .business-list li::before {
+      left: 0.8rem; /* slightly more left on md+ */
+    }
+  }
+
+  /* wrapper spacing using plain properties */
+  .business-list-wrap {
+    padding: 0.5rem 0;
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-layout {
+    @apply grid grid-cols-1 items-start gap-4 lg:grid-cols-2 lg:gap-16;
+  }
+
+  .contact-title {
+    @apply mb-4 text-3xl font-medium text-secondary-900;
+  }
+
+  .contact-description {
+    @apply mb-8 text-lg text-secondary-600;
+  }
+
+  .contact-methods {
+    @apply mt-0;
+  }
+
+  .contact-method {
+    @apply mb-2 flex gap-4 rounded-material-lg bg-white p-6 shadow-material-1;
+  }
+
+  .contact-icon {
+    @apply flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary-500;
+  }
+
+  .contact-icon .material-icons {
+    @apply text-2xl text-white;
+  }
+
+  .method-title {
+    @apply mb-2 text-lg font-medium;
+  }
+
+  .method-description {
+    @apply mb-2 text-sm text-secondary-600;
+  }
+
+  .contact-link {
+    @apply font-medium text-primary-500 hover:text-primary-700;
+  }
+
+  .contact-address {
+    @apply mb-0;
+  }
+
+  /* Office Info */
+  .office-layout {
+    @apply grid grid-cols-1 items-start gap-12 lg:grid-cols-2;
+  }
+
+  .office-detail-card {
+    @apply rounded-material-lg bg-white p-8 shadow-material-1;
+  }
+
+  .office-title {
+    @apply mb-8 text-xl font-medium text-primary-500;
+  }
+
+  .office-info-item {
+    @apply mb-8 flex items-start gap-4;
+  }
+
+  .office-info-item .material-icons {
+    @apply mt-1 text-primary-500;
+  }
+
+  .office-address {
+    @apply mb-0;
+  }
+
+  .map-placeholder {
+    @apply flex h-72 flex-col items-center justify-center rounded-material-lg bg-secondary-300 p-8 text-center text-secondary-600;
+  }
+
+  .map-icon .material-icons {
+    @apply mb-4 text-5xl text-secondary-400;
+  }
+
+  /* Footer */
+  .footer {
+    @apply bg-secondary-900 py-12 text-white;
+  }
+
+  .footer-content {
+    @apply flex items-center justify-between container-custom;
+  }
+
+  .footer-title {
+    @apply mb-4 text-lg font-medium text-white;
+  }
+
+  .footer-copyright {
+    @apply mb-0 text-secondary-400;
+  }
+
+  .footer-links {
+    @apply flex list-none gap-8;
+  }
+
+  .footer-links a {
+    @apply text-white/80 transition-opacity duration-150 hover:text-white hover:opacity-100;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      @apply h-[500px];
+    }
+
+    .hero-title {
+      @apply text-3xl;
+    }
+
+    .hero-subtitle {
+      @apply text-base;
+    }
+
+    .hero-actions {
+      @apply flex-row justify-center gap-2;
+    }
+
+    .director-profile {
+      @apply flex-col text-center;
+    }
+
+    .profile-img {
+      @apply h-30 w-30;
+    }
+
+    .services-grid {
+      @apply grid-cols-1;
+    }
+
+    .partners-grid {
+      @apply grid-cols-1;
+    }
+
+    .features-grid {
+      @apply grid-cols-1;
+    }
+
+    .feature-card {
+      @apply flex-col text-center;
+    }
+
+    .process-steps {
+      @apply grid-cols-1;
+    }
+
+    .timeline-item {
+      @apply flex-col text-center;
+    }
+
+    .member-credentials {
+      @apply flex-col items-center;
+    }
+
+    .footer-content {
+      @apply flex-col gap-8 text-center;
+    }
+
+    .footer-links {
+      @apply flex-col gap-4;
+    }
+
+    .contact-method {
+      @apply flex-row gap-3 p-4;
+    }
+
+    .section {
+      @apply section-padding-mobile;
+    }
+
+    .page-header {
+      @apply py-8;
+    }
+
+    .card {
+      @apply p-6;
+    }
+
+    .service-card,
+    .feature-card {
+      @apply p-6;
+    }
+
+    .logo h1 {
+      @apply text-xl;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      @apply text-2xl;
+    }
+
+    .page-header {
+      @apply py-8;
+    }
+
+    .card {
+      @apply p-4;
+    }
+
+    .service-card,
+    .feature-card {
+      @apply p-6;
+    }
+  }
+}
+
+/* Mobile Menu Animation */
+@media (max-width: 768px) {
+  .nav-list {
+    @apply pointer-events-none absolute left-0 right-0 top-full flex -translate-y-full transform flex-col gap-1 bg-white px-4 py-2 opacity-0 shadow-material-2 transition-all duration-300;
+  }
+
+  .nav-list.mobile-open {
+    @apply pointer-events-auto translate-y-0 transform opacity-100;
+  }
+
+  .nav-list li {
+    @apply w-full;
+  }
+
+  .nav-list .nav-link {
+    @apply block w-full text-left;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Prevent horizontal overflow on mobile */
+  .career-content {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .career-content p,
+  .career-content li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+/* Back to Top Button */
+.back-to-top {
+  @apply fixed bottom-8 right-8 z-50 hidden h-14 w-14 cursor-pointer rounded-full border-none bg-primary-500 text-white shadow-material-2 transition-all duration-300;
+}
+
+.back-to-top:hover {
+  @apply bg-primary-700 shadow-material-3;
+}
+
+/* Osaka Sections Styles */
+@layer components {
+  .osaka-info-box {
+    @apply rounded-material-lg border-l-4 border-primary-500 bg-primary-50 p-6;
+  }
+
+  .osaka-info-title {
+    @apply mb-2 flex items-center text-lg font-medium text-primary-700;
+  }
+
+  .osaka-info-list {
+    @apply space-y-1 text-secondary-700;
+  }
+
+  .osaka-separator {
+    @apply relative h-48 overflow-hidden md:h-64;
+  }
+
+  .osaka-separator-overlay {
+    @apply absolute inset-0 bg-gradient-to-r from-primary-500/20 to-primary-700/20;
+  }
+
+  .osaka-separator-content {
+    @apply absolute inset-0 flex items-center justify-center text-center text-white;
+  }
+
+  .global-access-section {
+    @apply relative h-80 overflow-hidden md:h-96;
+  }
+
+  .global-access-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-primary-900/60 via-primary-700/40 to-transparent;
+  }
+
+  .global-access-stats {
+    @apply mx-auto grid max-w-4xl grid-cols-1 gap-6 md:grid-cols-3;
+  }
+
+  .stat-card {
+    @apply rounded-material-lg bg-white/10 p-4 backdrop-blur-sm;
+  }
+
+  .stat-number {
+    @apply text-3xl font-bold text-primary-200;
+  }
+
+  .stat-label {
+    @apply text-sm;
+  }
+
+  /* Service Icons */
+  .service-icon-img {
+    display: inline-block;
+    background: rgb(74, 111, 165);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+  }
+
+  /* Timeline icon circle */
+  .timeline-icon {
+    display: flex;
+    height: 3.75rem;
+    width: 3.75rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: rgb(74 111 165 / 1);
+    color: rgb(255 255 255 / 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Business details list */
+  .business-list {
+    list-style-type: none;
+    padding-left: 1.25rem;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .business-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .business-details .content {
+    max-width: 60rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .business-details .business-list {
+    max-width: 60rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .icon-accounting {
+    -webkit-mask-image: url('images/icon-accounting.svg');
+    mask-image: url('images/icon-accounting.svg');
+  }
+
+  .icon-tax {
+    -webkit-mask-image: url('images/icon-tax.svg');
+    mask-image: url('images/icon-tax.svg');
+  }
+
+  .icon-global {
+    -webkit-mask-image: url('images/icon-global.svg');
+    mask-image: url('images/icon-global.svg');
+  }
+
+  .icon-dx {
+    -webkit-mask-image: url('images/icon-dx.svg');
+    mask-image: url('images/icon-dx.svg');
+  }
+
+  /* Ensure default unordered lists show black disc markers */
+  ul {
+    list-style-type: disc;
+  }
+
+  ul::marker {
+    color: #000;
+  }
+
+  .service-material-icon {
+    color: rgb(74, 111, 165) !important;
+  }
+
+  /* Service Overview List */
+  .overview-content ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .overview-content ul li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+}
