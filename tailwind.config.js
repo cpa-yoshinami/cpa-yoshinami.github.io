@@ -148,10 +148,10 @@ module.exports = {
           '@apply bg-primary-400 text-white': {},
         },
         '.section-padding': {
-          '@apply py-12': {},
+          '@apply py-16 md:py-20': {}, /* Increased from py-12 for better breathing space */
         },
         '.section-padding-mobile': {
-          '@apply py-6': {},
+          '@apply py-8': {}, /* Increased from py-6 for mobile */
         },
         '.container-custom': {
           '@apply max-w-6xl mx-auto px-4': {},
@@ -161,7 +161,7 @@ module.exports = {
             {},
         },
         '.hero-overlay': {
-          '@apply absolute inset-0 bg-gradient-to-br from-primary-500/80 to-primary-700/60': {},
+          '@apply absolute inset-0 bg-primary-500/70': {}, /* Simplified from gradient to solid overlay */
         },
         '.timeline-icon': {
           '@apply flex-shrink-0 w-15 h-15 bg-primary-500 rounded-full flex items-center justify-center shadow-material-2':

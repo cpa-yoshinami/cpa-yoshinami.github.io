@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize all functionality
   initMobileMenu();
   initSmoothScrolling();
+  updateCopyrightYear();
 });
 
 // Mobile Menu Functionality
@@ -73,7 +74,16 @@ function initSmoothScrolling() {
   });
 }
 
+// Update Copyright Year
+function updateCopyrightYear() {
+  const currentYear = new Date().getFullYear();
+  const copyrightElements = document.querySelectorAll('.footer-copyright');
 
+  copyrightElements.forEach((element) => {
+    // Replace any year (4 digits) with current year
+    element.innerHTML = element.innerHTML.replace(/\d{4}/, currentYear);
+  });
+}
 
 // Utility Functions
 function debounce(func, wait) {
