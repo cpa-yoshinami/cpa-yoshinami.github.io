@@ -33,7 +33,7 @@ body {
   }
 
   .logo h1 {
-    @apply m-0 text-2xl font-medium text-primary-500;
+    @apply m-0 text-2xl font-bold text-primary-500;
   }
 
   .nav-list {
@@ -67,7 +67,11 @@ body {
 
   /* Hero Section */
   .hero {
-    @apply relative mt-[70px] flex h-[650px] items-center overflow-hidden;
+    @apply relative flex h-[650px] items-center overflow-hidden;
+  }
+
+  .hero-with-header-offset {
+    @apply mt-[70px];
   }
 
   .hero-background {
@@ -76,6 +80,10 @@ body {
 
   .hero-image {
     @apply h-full w-full object-cover;
+  }
+
+  .hero-overlay {
+    @apply absolute inset-0 bg-black/20;
   }
 
   .hero-content {
@@ -94,17 +102,25 @@ body {
     @apply flex flex-wrap justify-center gap-4;
   }
 
-  /* Page Header */
+  /* Page Header - 装飾とスタイル強化 */
   .page-header {
-    @apply mt-[70px] bg-primary-600 text-center text-white section-padding; /* Simplified from gradient to solid */
+    @apply relative mt-[70px] overflow-hidden
+           bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800
+           py-24 md:py-32 text-center text-white;
+  }
+
+  .page-header::before {
+    content: '';
+    @apply absolute inset-0 opacity-10;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
   }
 
   .page-title {
-    @apply mb-4 text-4xl font-bold text-white;
+    @apply relative z-10 mb-6 text-4xl md:text-5xl font-bold text-white;
   }
 
   .page-subtitle {
-    @apply text-lg text-white/90;
+    @apply relative z-10 text-lg md:text-xl text-white/90 font-light;
   }
 
   /* Section Styles */
@@ -245,21 +261,29 @@ body {
     @apply flex flex-wrap justify-center gap-4;
   }
 
-  /* Call to Action */
+  /* Call to Action - 装飾とスタイル強化 */
   .cta {
-    @apply bg-primary-600 text-white section-padding; /* Simplified from gradient to solid */
+    @apply relative overflow-hidden
+           bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800
+           py-24 md:py-32 text-white;
+  }
+
+  .cta::before {
+    content: '';
+    @apply absolute inset-0 opacity-10;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
   .cta-content {
-    @apply text-center;
+    @apply relative z-10 text-center;
   }
 
   .cta-title {
-    @apply mb-4 text-3xl font-medium text-white;
+    @apply mb-6 text-4xl md:text-5xl font-bold text-white;
   }
 
   .cta-subtitle {
-    @apply mb-8 text-white/90;
+    @apply mb-10 text-lg md:text-xl text-white/90 font-light;
   }
 
   /* Content Layout */
@@ -726,7 +750,7 @@ body {
 
   /* Footer */
   .footer {
-    @apply bg-secondary-900 py-12 text-white;
+    @apply bg-secondary-900 py-24 md:py-32 text-white;
   }
 
   .footer-content {
