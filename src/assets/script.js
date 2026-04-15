@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     duration: 800,
     once: true,
     offset: 100,
-    easing: 'ease-out-cubic'
+    easing: 'ease-out-cubic',
   });
 
   // Initialize all functionality
@@ -103,10 +103,12 @@ window.addEventListener(
   'scroll',
   debounce(function () {
     const header = document.querySelector('.header');
-    if (window.scrollY > 100) {
-      header.style.boxShadow = 'var(--shadow-3)';
+    if (window.scrollY > 50) {
+      header.classList.add('shadow-material-2');
+      header.classList.remove('shadow-material-1');
     } else {
-      header.style.boxShadow = 'var(--shadow-1)';
+      header.classList.add('shadow-material-1');
+      header.classList.remove('shadow-material-2');
     }
   }, 10)
 );
@@ -117,23 +119,6 @@ function createBackToTop() {
   backToTopBtn.innerHTML = '<span class="material-icons">keyboard_arrow_up</span>';
   backToTopBtn.className = 'back-to-top';
   backToTopBtn.setAttribute('aria-label', 'ページトップに戻る');
-
-  backToTopBtn.style.cssText = `
-        position: fixed;
-        bottom: 2rem;
-        right: 2rem;
-        width: 56px;
-        height: 56px;
-        background-color: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        box-shadow: var(--shadow-2);
-        transition: all var(--transition-normal);
-        z-index: 999;
-        display: none;
-    `;
 
   document.body.appendChild(backToTopBtn);
 
@@ -171,13 +156,13 @@ document.addEventListener('DOMContentLoaded', function () {
       placeholder.style.cssText = `
                 width: ${this.width || '100'}px;
                 height: ${this.height || '100'}px;
-                background-color: var(--divider);
+                background-color: #e0e0e0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: var(--text-secondary);
+                color: #757575;
                 font-size: 0.875rem;
-                border-radius: 4px;
+                border-radius: 12px;
             `;
       placeholder.textContent = '画像を準備中';
 
