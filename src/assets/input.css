@@ -25,7 +25,8 @@ body {
 @layer components {
   /* Header Styles */
   .header {
-    @apply fixed left-0 right-0 top-0 z-50 bg-secondary-200 shadow-material-1;
+    @apply fixed left-0 right-0 top-0 z-50 bg-white/80 shadow-material-1 backdrop-blur-md;
+    border-bottom: 1px solid rgba(74,111,165,0.08);
   }
 
   .header-container {
@@ -83,7 +84,8 @@ body {
   }
 
   .hero-overlay {
-    @apply absolute inset-0 bg-black/20;
+    @apply absolute inset-0;
+    background: linear-gradient(135deg, rgba(26,37,84,0.7) 0%, rgba(74,111,165,0.5) 100%);
   }
 
   .hero-content {
@@ -105,8 +107,8 @@ body {
   /* Page Header - 装飾とスタイル強化 */
   .page-header {
     @apply relative mt-[70px] overflow-hidden
-           bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800
-           py-24 md:py-32 text-center text-white;
+           bg-gradient-to-br from-primary-800 via-primary-600 to-indigo-400
+           py-28 md:py-36 text-center text-white;
   }
 
   .page-header::before {
@@ -133,11 +135,11 @@ body {
   }
 
   .section-title {
-    @apply mb-4 text-3xl font-medium text-secondary-900;
+    @apply mb-4 text-3xl md:text-4xl font-bold text-secondary-900;
   }
 
   .section-subtitle {
-    @apply mx-auto max-w-2xl text-lg text-secondary-600;
+    @apply mx-auto max-w-2xl text-lg text-secondary-500 leading-relaxed;
   }
 
   /* Card Styles */
@@ -183,7 +185,8 @@ body {
   }
 
   .service-card {
-    @apply rounded-material-lg bg-white p-8 text-center shadow-material-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-material-3;
+    @apply rounded-material-lg p-8 text-center shadow-material-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-material-3;
+    background: linear-gradient(to bottom, #ffffff, rgba(240,244,248,0.3));
   }
 
   .service-icon {
@@ -221,24 +224,13 @@ body {
   }
 
   .partner-card {
-    @apply relative rounded-material-lg bg-white p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-material-3;
-    border-left: 4px solid transparent;
+    @apply relative rounded-material-lg p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-material-3;
+    background: linear-gradient(to bottom, #ffffff, rgba(240,244,248,0.3));
+    border-left: 3px solid rgba(74,111,165,0.3);
   }
 
-  .partner-card::before {
-    content: '';
-    @apply absolute left-0 top-0 h-full w-1 rounded-l-material-lg;
-    background: rgb(74, 111, 165); /* Primary-500 solid color */
-    transition: width 0.3s ease;
-  }
-
-  .partner-card:hover::before {
-    @apply w-2;
-  }
-
-  /* Unified color for all partner cards - removed gradients for professional look */
-  .partner-card::before {
-    background: rgb(74, 111, 165); /* Primary-500 solid color */
+  .partner-card:hover {
+    border-left-color: rgba(74,111,165,0.8);
   }
 
   .partner-logo {
@@ -264,8 +256,8 @@ body {
   /* Call to Action - 装飾とスタイル強化 */
   .cta {
     @apply relative overflow-hidden
-           bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800
-           py-24 md:py-32 text-white;
+           bg-gradient-to-br from-primary-800 via-primary-600 to-indigo-400
+           py-28 md:py-36 text-white;
   }
 
   .cta::before {
@@ -358,7 +350,8 @@ body {
   }
 
   .credential {
-    @apply flex items-center gap-2 rounded-full bg-secondary-100 px-4 py-2 text-sm;
+    @apply flex items-center gap-2 rounded-full px-4 py-2 text-sm backdrop-blur-sm border border-primary-500/20;
+    background: rgba(240,244,248,0.7);
   }
 
   .credential .material-icons {
@@ -430,7 +423,8 @@ body {
   }
 
   .service-detail-card {
-    @apply overflow-hidden rounded-material-lg bg-white shadow-material-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-material-3;
+    @apply overflow-hidden rounded-material-lg shadow-material-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-material-3;
+    background: linear-gradient(to bottom, #ffffff, rgba(240,244,248,0.3));
   }
 
   .service-header {
@@ -480,7 +474,8 @@ body {
   }
 
   .feature-card {
-    @apply flex gap-6 rounded-material-lg bg-white p-8 shadow-material-1 transition-shadow duration-300 hover:shadow-material-2;
+    @apply flex gap-6 rounded-material-lg p-8 shadow-material-1 transition-all duration-300 hover:shadow-material-3 hover:-translate-y-0.5;
+    background: linear-gradient(to bottom, #ffffff, rgba(240,244,248,0.3));
   }
 
   .feature-number {
@@ -751,6 +746,7 @@ body {
   /* Footer */
   .footer {
     @apply bg-secondary-900 py-24 md:py-32 text-white;
+    border-top: 2px solid rgba(74,111,165,0.3);
   }
 
   .footer-content {
@@ -884,7 +880,7 @@ body {
 /* Mobile Menu Animation */
 @media (max-width: 768px) {
   .nav-list {
-    @apply pointer-events-none absolute left-0 right-0 top-full flex -translate-y-full transform flex-col gap-1 bg-white px-4 py-2 opacity-0 shadow-material-2 transition-all duration-300;
+    @apply pointer-events-none absolute left-0 right-0 top-full flex -translate-y-full transform flex-col gap-1 bg-white/95 backdrop-blur-md px-4 py-2 opacity-0 shadow-material-2 transition-all duration-300;
   }
 
   .nav-list.mobile-open {
@@ -1002,7 +998,7 @@ body {
     border-radius: 9999px;
     background-color: rgb(74 111 165 / 1);
     color: rgb(255 255 255 / 1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(74,111,165,0.2), 0 2px 4px rgba(74,111,165,0.1);
   }
 
   /* Business details list */

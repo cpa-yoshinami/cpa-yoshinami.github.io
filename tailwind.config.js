@@ -69,10 +69,11 @@ module.exports = {
         },
       },
       boxShadow: {
-        'material-1': '0 2px 4px rgba(0,0,0,0.12)',
-        'material-2': '0 4px 8px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08)',
-        'material-3': '0 8px 16px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08)',
-        'material-4': '0 16px 32px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.08)',
+        'material-1': '0 2px 8px rgba(74,111,165,0.10)',
+        'material-2': '0 4px 12px rgba(74,111,165,0.12), 0 2px 4px rgba(74,111,165,0.06)',
+        'material-3': '0 8px 24px rgba(74,111,165,0.14), 0 4px 8px rgba(74,111,165,0.08)',
+        'material-4': '0 16px 40px rgba(74,111,165,0.16), 0 8px 16px rgba(74,111,165,0.08)',
+        'material-glow': '0 8px 30px rgba(74,111,165,0.25)',
       },
       animation: {
         'fade-in': 'fadeIn 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)',
@@ -98,8 +99,9 @@ module.exports = {
         88: '22rem',
       },
       borderRadius: {
-        material: '4px',
-        'material-lg': '8px',
+        material: '12px',
+        'material-lg': '16px',
+        'material-xl': '24px',
       },
       fontSize: {
         xs: '0.75rem',
@@ -122,33 +124,34 @@ module.exports = {
     function ({ addUtilities }) {
       const newUtilities = {
         '.btn-material': {
-          '@apply inline-flex items-center gap-2 px-6 py-3 rounded-material font-medium text-sm uppercase tracking-wide transition-all duration-150 ease-material':
+          '@apply inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm tracking-wide transition-all duration-200':
             {},
         },
         '.btn-primary': {
-          '@apply bg-primary-500 text-white shadow-material-1 hover:bg-primary-700 hover:shadow-material-2':
+          '@apply bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-material-2 hover:shadow-material-glow hover:from-primary-600 hover:to-primary-800':
             {},
         },
         '.btn-outline': {
-          '@apply bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-500':
+          '@apply bg-transparent border-2 border-white text-white rounded-full hover:bg-white hover:text-primary-600':
             {},
         },
         '.btn-large': {
           '@apply px-8 py-4 text-base': {},
         },
         '.card-material': {
-          '@apply bg-white rounded-material-lg shadow-material-1 p-8 mb-8 transition-shadow duration-300 hover:shadow-material-2':
+          '@apply rounded-material-lg shadow-material-1 p-8 mb-8 transition-all duration-300 hover:shadow-material-3 hover:-translate-y-0.5':
             {},
+          background: 'linear-gradient(to bottom, #ffffff, rgba(240,244,248,0.3))',
         },
         '.nav-link': {
-          '@apply text-secondary-900 font-normal px-4 py-2 rounded-material transition-all duration-150 hover:bg-primary-400 hover:text-white':
+          '@apply text-secondary-700 font-medium px-4 py-2 rounded-full transition-all duration-200 hover:bg-primary-50 hover:text-primary-600':
             {},
         },
         '.nav-link-active': {
-          '@apply bg-primary-400 text-white': {},
+          '@apply bg-primary-50 text-primary-600 font-medium': {},
         },
         '.section-padding': {
-          '@apply py-16 md:py-20': {}, /* Increased from py-12 for better breathing space */
+          '@apply py-20 sm:py-28': {},
         },
         '.section-padding-mobile': {
           '@apply py-8': {}, /* Increased from py-6 for mobile */
@@ -157,11 +160,11 @@ module.exports = {
           '@apply max-w-6xl mx-auto px-4': {},
         },
         '.text-gradient': {
-          '@apply bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent':
+          '@apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent':
             {},
         },
-        '.hero-overlay': {
-          '@apply absolute inset-0 bg-primary-500/70': {}, /* Simplified from gradient to solid overlay */
+        '.section-label': {
+          '@apply mb-3 text-xs font-semibold uppercase tracking-widest text-primary-500': {},
         },
         '.timeline-icon': {
           '@apply flex-shrink-0 w-15 h-15 bg-primary-500 rounded-full flex items-center justify-center shadow-material-2':
