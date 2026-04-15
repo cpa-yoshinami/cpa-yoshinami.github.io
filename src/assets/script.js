@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     duration: 800,
     once: true,
     offset: 100,
-    easing: 'ease-out-cubic'
+    easing: 'ease-out-cubic',
   });
 
   // Initialize all functionality
